@@ -211,25 +211,27 @@ $(document).ready(function () {
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         var data = $(this).serialize();
-
+        console.log("Serialized Data: ", data); // Check data being sent
+    
         $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-
+    
         if (MD5($('#invite_code').val()) !== '1bd0a04b51c04f7251ac36af4e1ba37b') {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> Your invite code is incorrect.'));
         } else {
             $.post('https://script.google.com/macros/s/AKfycbwzClDieSNNB4FsB2dxZVBQIhZPOpKNbmJUC5A7veO-b3JqQbaznFl1pgXG7IZiuIvCHA/exec', data)
-                .done(function (data) {
-                    console.log(data);
-                    if (data.result === "error") {
-                        $('#alert-wrapper').html(alert_markup('danger', data.message));
+                .done(function (response) {
+                    console.log(response);
+                    // Check if response is parsed correctly
+                    if (response.result === "error") {
+                        $('#alert-wrapper').html(alert_markup('danger', response.message));
                     } else {
                         $('#alert-wrapper').html('');
                         $('#rsvp-modal').modal('show');
                     }
                 })
-                .fail(function (data) {
-                    console.log(data);
-                    $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server. '));
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    console.log("Error: ", textStatus, errorThrown);
+                    $('#alert-wrapper').html(alert_markup('danger', '<strong>Sorry!</strong> There is some issue with the server.'));
                 });
         }
     });
