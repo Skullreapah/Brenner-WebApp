@@ -184,23 +184,23 @@ $(document).ready(function () {
         },
         data: {
             // Event title
-            title: "Ram and Antara's Wedding",
+            title: "Beth and Josh's Wedding",
 
             // Event start date
-            start: new Date('Nov 27, 2017 10:00'),
+            start: new Date('Dec 7, 2024 14:00'),
 
             // Event duration (IN MINUTES)
             // duration: 120,
 
             // You can also choose to set an end time
             // If an end time is set, this will take precedence over duration
-            end: new Date('Nov 29, 2017 00:00'),
+            end: new Date('Dec 7, 2024 20:00'),
 
             // Event Address
-            address: 'ITC Fortune Park Hotel, Kolkata',
+            address: '457 S Woodlawn Blvd, Wichita, KS 67218',
 
             // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
+            description: "We can't wait to see you on our big day. For any queries or issues, please contact Beth + Josh at brenner.hitched@gmail.com"
         }
     });
 
